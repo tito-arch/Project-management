@@ -134,16 +134,58 @@ const mutation = new GraphQLObjectType({
           }),
          defaultValue: 'Not Started',
         },
-        ClientId: {type:GraphQLNonNull(GraphQLID)},
+        clientId: {type:GraphQLNonNull(GraphQLID)},
       },
       resolve(parent, args) {
         const project = new Project({
           name : args.name,
           description: args.description,
-          clientId:args.ClientId,
+          clientId:args.clientId,
         });
         return project.save();
       }
+    },
+    //DELETE PROJECT
+    deleteProject:{
+      type: ProjectType,
+      args: {
+        id: {type: GraphQLNonNull(GraphQLID)},
+      },
+      resolve(parent, args) {
+        return Project.findByIdAndRemove(args.id);
+      },
+    },
+    //UPDATE A PROJECT
+    updateProject:{
+      type: ProjectType,
+      args:{
+       id: {type: GraphQLNonNull(GraphQLID)},
+       name: {type: GraphQLString},
+       description:{type: GraphQLString},
+       status:{
+        type: new GraphQLEnumType({
+          name : 'ProjectStatusUpdate',
+          values:{
+            'new': {value: 'Not Started'},
+            'progress': {value: 'In Progress'},
+            'completed': {value: 'completed'},
+          }
+        })
+      },
+     },
+     resolve(parent,args) {
+      return Project.findByIdAndUpdate(
+        args.id,
+        {
+          $set: {
+            name:args.name,
+            description: args.description,
+            status: args.status,
+          },
+        },
+        {new: true}
+      );
+     }
     }
   }
 
