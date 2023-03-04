@@ -1,17 +1,20 @@
+To set up the project, follow these steps:
 
-Run npm install
-Create a .env file at the root of the file and add the following
+Run npm install in the project directory to install all necessary dependencies.
 
-
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = mongodb+srv://#*##################.abpxecs.mongodb.net/mngmt_db?retryWrites=true&w=majority
- 
+Create a .env file at the root of the project directory. This file will store your environment variables. Add the following variables to it:
 
 
-Add a .gitignore file at the root with the following 
+
+NODE_ENV=development
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>.abpxecs.mongodb.net/<database-name>?retryWrites=true&w=majority
+Replace <username>, <password>, <cluster-url>, and <database-name> with the appropriate values for your MongoDB Atlas account.
+
+Create a .gitignore file at the root of the project directory. This file will tell Git to ignore certain files when committing changes. Add the following lines to it:
+
+
 
 node_modules
 .env
-
-All this steps are to be followed
+This will tell Git to ignore the node_modules directory and the .env file.
