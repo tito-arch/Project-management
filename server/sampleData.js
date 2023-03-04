@@ -42,8 +42,9 @@ const projects = [
     },
   ];
   
-  // Clients
-  const clients = [
+
+// Clients
+ const clients = [
     {
       id: '1',
       name: 'Tony Stark',

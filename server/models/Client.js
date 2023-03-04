@@ -6,8 +6,9 @@ const ClientSchema = new mongoose.Schema({
   },
   email :{
     type: String,
-  },name :{
-    phone: String,
+  },
+  phone :{
+    type: String,
   }
 });
 
