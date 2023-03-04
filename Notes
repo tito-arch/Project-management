@@ -13,8 +13,9 @@ Replace <username>, <password>, <cluster-url>, and <database-name> with the appr
 
 Create a .gitignore file at the root of the project directory. This file will tell Git to ignore certain files when committing changes. Add the following lines to it:
 
-
+This step could be done for you, check to confirm whether this file exists. If not follow the steps below.
 
 node_modules
 .env
+
 This will tell Git to ignore the node_modules directory and the .env file.
